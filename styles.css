@@ -465,3 +465,62 @@ button.btn-finalizar:hover {
     text-decoration: none;
     color: inherit;
 }
+
+/* Estilos de textiles*/
+
+/* Contenedor de textiles */
+.textiles-container {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una lista vertical */
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8e9ce; /* Fondo claro */
+}
+
+/* Estilo para cada item de textiles */
+.textiles-item {
+    display: flex; /* Usa flexbox para alinear la imagen y los detalles en una fila */
+    align-items: center;
+    border: 2px solid #241909; /* Borde oscuro */
+    border-radius: 8px;
+    background-color: #ede6cf; /* Fondo claro */
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto hover */
+.textiles-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen de textiles */
+.textiles-imagen {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px; /* Espacio entre la imagen y los detalles */
+}
+
+/* Detalles de textiles */
+.textiles-detalles {
+    display: flex;
+    flex-direction: column; /* Alinea el nombre y el precio en una columna */
+    justify-content: center;
+}
+
+/* Nombre del producto */
+.textiles-nombre {
+    font-size: 1.2em;
+    color: #241909; /* Color oscuro */
+    margin: 0 0 10px 0; /* Espaciado inferior */
+}
+
+/* Precio del producto */
+.textiles-precio {
+    font-size: 1em;
+    color: #608468; /* Color verde */
+    font-weight: bold;
+}
