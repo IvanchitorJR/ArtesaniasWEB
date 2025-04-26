@@ -407,6 +407,27 @@ button.btn-finalizar:hover {
 
 /* Categorias */
 
+.btn-volver {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    background-color: #608468; 
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto hover para el botón */
+.btn-volver:hover {
+    background-color: #4eb184; /* Color verde más claro */
+    transform: scale(1.05);
+}
+
 .categorias {
     display: flex;
     flex-wrap: wrap;
@@ -468,8 +489,8 @@ button.btn-finalizar:hover {
 
 /* Estilos de textiles*/
 
-/* Contenedor de textiles */
-.textiles-container {
+/* Contenedor genérico para categorías */
+.categoria-container {
     display: flex;
     flex-direction: column; /* Alinea los elementos en una lista vertical */
     gap: 20px;
@@ -477,50 +498,70 @@ button.btn-finalizar:hover {
     background-color: #f8e9ce; /* Fondo claro */
 }
 
-/* Estilo para cada item de textiles */
-.textiles-item {
-    display: flex; /* Usa flexbox para alinear la imagen y los detalles en una fila */
+/* Estilo para cada item genérico */
+.categoria-item-detalle {
+    display: flex; 
     align-items: center;
-    border: 2px solid #241909; /* Borde oscuro */
+    border: 2px solid #241909; 
     border-radius: 8px;
-    background-color: #ede6cf; /* Fondo claro */
+    background-color: #ede6cf; 
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 /* Efecto hover */
-.textiles-item:hover {
+.categoria-item-detalle:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Imagen de textiles */
-.textiles-imagen {
+/* Imagen genérica */
+.categoria-imagen {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 8px;
-    margin-right: 15px; /* Espacio entre la imagen y los detalles */
+    margin-right: 15px;
 }
 
-/* Detalles de textiles */
-.textiles-detalles {
+/* Detalles genéricos */
+.categoria-detalles {
     display: flex;
-    flex-direction: column; /* Alinea el nombre y el precio en una columna */
+    flex-direction: column; 
     justify-content: center;
 }
 
 /* Nombre del producto */
-.textiles-nombre {
+.categoria-nombre {
     font-size: 1.2em;
-    color: #241909; /* Color oscuro */
-    margin: 0 0 10px 0; /* Espaciado inferior */
+    color: #241909; 
+    margin: 0 0 10px 0; 
 }
 
 /* Precio del producto */
-.textiles-precio {
+.categoria-precio {
     font-size: 1em;
-    color: #608468; /* Color verde */
+    color: #608468; 
     font-weight: bold;
+}
+
+/* Botón para agregar al carrito */
+.btn-agregar-carrito {
+    background-color: #608468; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    align-self: flex-start;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto hover para el botón */
+.btn-agregar-carrito:hover {
+    background-color: #4eb184; 
+    transform: scale(1.05);
 }
