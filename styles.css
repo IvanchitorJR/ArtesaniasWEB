@@ -404,3 +404,64 @@ button.btn-finalizar:hover {
 .personalizado h1, p{
     margin-bottom: 15px;   
 }
+
+/* Categorias */
+
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    color: #3b1601;
+    margin: 20px;
+}
+
+/* Estilo para el contenedor de categorías */
+.categorias-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 10px;
+}
+
+/* Estilo para cada elemento de categoría */
+.categoria-item {
+    text-align: center;
+    border: 1px solid #ede6cf;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 200px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #ede6cf;
+}
+
+/* Efecto hover para los elementos */
+.categoria-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para las imágenes */
+.categoria-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo para los títulos */
+.categoria-item h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    font-family: Arial, sans-serif;
+}
+
+.categoria-item a {
+
+    text-decoration: none;
+    color: inherit;
+}
