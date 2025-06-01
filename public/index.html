@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>ProyectoWEB Inicio</title>
+   
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="elementosMenu">
+            <img id="logo" src="recursos\slack.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="/index.html">INICIO</a>
+            <img src="recursos\home.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="/galeria.html">GALERIA</a>
+            <img src="recursos\gallery.png">
+        </div>
+        <div class="elementosMenu" href="carrito.html">
+            <a href="carrito.html">CARRITO</a>
+            <img src="recursos\shopping-cart.png" href="carrito.html">
+        </div>
+        <div class="elementosMenu">
+            <a href="/contacto.html">CONTACTO</a>
+            <img src="recursos\phone-call.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="/cuenta.html">CUENTA</a>
+            <img src="recursos\account.png">
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="galeriaImagenes">
+            <div class="carrusel">
+                <img class="carruselImagen activa" src="recursos/artesania.jpeg" alt="Imagen 1">
+                <img class="carruselImagen" src="recursos/artesania2.jpg" alt="Imagen 2">
+                <img class="carruselImagen" src="recursos/artesania3.jpeg" alt="Imagen 3">
+                <button class="botonCarrusel" id="anterior">&#10094;</button>
+                <button class="botonCarrusel" id="siguiente">&#10095;</button>
+            </div>
+        </div>
+            
+        <div class="botones">
+            <a class="linksBotones" href="tendencias.html">
+                <div class="botonesReales">
+                    <h3 class="textoBotones" >TENDENCIAS</h3>
+                </div> 
+            </a>
+            <a class="linksBotones" href="ofertas.html">
+                <div class="botonesReales">
+                    <h3 class="textoBotones">OFERTAS</h3>
+                </div>
+            </a>
+            <a class="linksBotones" href="categorias.html">
+                <div class="botonesReales">
+                    <h3 class="textoBotones">CATEGORIAS</h3>
+                </div>
+            </a>
+            <a href="personalizado.html" class="linksBotones">
+                <div class="botonesReales">
+                    <h3 class="textoBotones">PERSONALIZADO</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const imagenes = document.querySelectorAll('.carruselImagen');
+        const anterior = document.getElementById('anterior');
+        const siguiente = document.getElementById('siguiente');
+        let indiceActual = 0;
+    
+        function mostrarImagen(indice) {
+            imagenes.forEach((img, i) => {
+                img.classList.toggle('activa', i === indice);
+            });
+        }
+    
+        anterior.addEventListener('click', () => {
+            indiceActual = (indiceActual === 0) ? imagenes.length - 1 : indiceActual - 1;
+            mostrarImagen(indiceActual);
+        });
+    
+        siguiente.addEventListener('click', () => {
+            indiceActual = (indiceActual === imagenes.length - 1) ? 0 : indiceActual + 1;
+            mostrarImagen(indiceActual);
+        });
+    
+        
+    </script>
+</body>
+</html>

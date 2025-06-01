@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProyectoWEB Personalizado</title>
+</head>
+<body>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+
+    <div class="container">
+        <div class="elementosMenu">
+            <img id="logo" src="recursos\slack.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="/index.html">INICIO</a>
+            <img src="recursos\home.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="/galeria.html">GALERIA</a>
+            <img src="recursos\gallery.png">
+        </div>
+        <div class="elementosMenu" href="carrito.html">
+            <a href="carrito.html">CARRITO</a>
+            <img src="recursos\shopping-cart.png" href="carrito.html">
+        </div>
+        <div class="elementosMenu">
+            <a href="/contacto.html">CONTACTO</a>
+            <img src="recursos\phone-call.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="/cuenta.html">CUENTA</a>
+            <img src="recursos\account.png">
+        </div>
+    </div>
+
+    <div class="personalizado">
+        <h1>Personaliza tu Artesanía</h1>
+        <p>Selecciona tus preferencias para crear una artesanía única.</p>
+        <form action="procesar_personalizacion.php" method="post">
+            <label for="tipo">Tipo de artesanía:</label><br>
+            <select id="tipo" name="tipo">
+                <option value="ceramica">Cerámica</option>
+                <option value="textil">Textil</option>
+                <option value="madera">Madera</option>
+            </select><br><br>
+
+            <label for="color">Color:</label><br>
+            <input type="color" id="color" name="color"><br><br>
+
+            <label for="tamaño">Tamaño:</label><br>
+            <input type="range" id="tamaño" name="tamaño" min="1" max="10"><br><br>
+
+            <input type="submit" value="Crear Artesanía Personalizada">
+        </form>
+</body>
+</html>
