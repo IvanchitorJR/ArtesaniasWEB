@@ -22,17 +22,19 @@ app.post('/login', (req, res) => {
 
 
 app.post('/signin', (req, res) => {
-    const { correo, contrasena } = req.body;
-    // Verifica si el usuario ya existe
+    // Extraemos todos los campos enviados por el formulario
+    const { Nombre, correo, Contrasena, Numero, Rol } = req.body;
+    
+    // Verifica si el usuario ya existe (usando el correo)
     const checkSql = 'SELECT * FROM usuarios WHERE correo = ?';
     db.query(checkSql, [correo], (err, result) => {
         if (err) return res.send('Error en la base de datos');
         if (result.length > 0) {
             return res.send('El usuario ya existe');
         }
-        // Inserta el nuevo usuario
-        const insertSql = 'INSERT INTO usuarios (correo, contrasena) VALUES (?, ?)';
-        db.query(insertSql, [correo, contrasena], (err2) => {
+        // Inserta el nuevo usuario con todos los datos
+        const insertSql = 'INSERT INTO usuarios (Nombre, correo, Contrasena, Numero, Rol) VALUES (?, ?, ?, ?, ?)';
+        db.query(insertSql, [Nombre, correo, Contrasena, Numero, Rol], (err2) => {
             if (err2) return res.send('Error al crear la cuenta');
             res.send('Cuenta creada exitosamente');
         });
@@ -43,5 +45,5 @@ app.post('/signin', (req, res) => {
 
 app.listen(4000, () => {
     console.log('Servidor corriendo en http://localhost:4000');
-    console.log('Pagina de login en http://localhost:4000/index.html');
+    console.log('Pagina de login en http://localhost:4000/login.html');
 });
