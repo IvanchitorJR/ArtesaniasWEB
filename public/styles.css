@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -674,4 +676,84 @@ button.btn-finalizar:hover {
 .btn-agregar-carrito:hover {
     background-color: #4eb184; 
     transform: scale(1.05);
+}
+
+#error-message {
+    color: red;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Botón en la esquina superior derecha */
+.btn-login-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #332218;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-signup-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #332218;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.signin-container {
+    position: relative;
+    max-width: 400px;
+    margin: 40px auto 0; 
+    padding-top: 50px; 
+}
+
+.personalizado {
+    position: relative;
+    max-width: 400px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 20px; 
+}
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    margin-bottom: 20px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.login-form input[type="submit"] {
+    padding: 10px;
+    background-color: #332218;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
 }
