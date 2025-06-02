@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="elementosMenu">
+            <img id="logo" src="recursos/slack.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="index.html">INICIO</a>
+            <img src="recursos/home.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="galeria.html">GALERIA</a>
+            <img src="recursos/gallery.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="carrito.html">CARRITO</a>
+            <img src="recursos/shopping-cart.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="contacto.html">CONTACTO</a>
+            <img src="recursos/phone-call.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="cuenta.html">CUENTA</a>
+            <img src="recursos/account.png">
+        </div>
+    </div>
+
+    <div class="signin-container">
+       
+        <a href="login.html" class="btn-login-link">Iniciar Sesión</a>
+
+        <h1 style="margin-bottom: 10px; color: #332218; text-align: center;">Crear Cuenta</h1>
+        <form id="signin-form" action="/signin" method="post" style="width:100%; display:flex; flex-direction:column;">
+            <label for="Nombre" style="margin-bottom:5px; font-weight:bold; color:#555;">Nombre:</label>
+            <input type="text" id="Nombre" name="Nombre" required style="margin-bottom:20px; padding:8px; border-radius:8px; border:1px solid #ccc;">
+            
+            <label for="correo" style="margin-bottom:5px; font-weight:bold; color:#555;">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required style="margin-bottom:20px; padding:8px; border-radius:8px; border:1px solid #ccc;">
+
+            <label for="Contrasena" style="margin-bottom:5px; font-weight:bold; color:#555;">Contraseña:</label>
+            <input type="password" id="Contrasena" name="Contrasena" required style="margin-bottom:20px; padding:8px; border-radius:8px; border:1px solid #ccc;">
+
+            <label for="Numero" style="margin-bottom:5px; font-weight:bold; color:#555;">Número:</label>
+            <input type="text" id="Numero" name="Numero" required style="margin-bottom:20px; padding:8px; border-radius:8px; border:1px solid #ccc;">
+
+            <label for="Rol" style="margin-bottom:5px; font-weight:bold; color:#555;">Rol:</label>
+            <select id="Rol" name="Rol" required style="margin-bottom:20px; padding:8px; border-radius:8px; border:1px solid #ccc;">
+                <option value="">Selecciona un rol</option>
+                <option value="comprador">Comprador</option>
+                <option value="vendedor">Vendedor</option>
+            </select>    
+
+            <input type="submit" value="Crear Cuenta" style="padding:10px; background-color:#332218; color:white; border:none; border-radius:8px; font-size:16px; cursor:pointer;">
+        </form>
+        <div id="error-message"></div>
+    </div>
+
+    <script>
+        const signinForm = document.getElementById('signin-form');
+        const errorMessage = document.getElementById('error-message');
+
+        signinForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(signinForm);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('/signin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(data)
+            })
+            .then(response => response.text())
+            .then(text => {
+                if(text.trim() === 'Cuenta creada exitosamente'){
+                    errorMessage.style.color = 'green';
+                    errorMessage.textContent = text;
+                    // Redirige después de 2 segundos para que el usuario vea el mensaje de éxito
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    errorMessage.style.color = 'red';
+                    errorMessage.textContent = text;
+                }
+            })
+            .catch(err => {
+                errorMessage.style.color = 'red';
+                errorMessage.textContent = 'Error en la conexión con el servidor';
+                console.error(err);
+            });
+        });
+    </script>
+</body>
+</html>
