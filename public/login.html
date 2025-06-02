@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        
+        /* Estilo para el mensaje de error */
+        #error-message {
+            color: red;
+            font-family: 'Roboto', sans-serif;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="elementosMenu">
+            <img id="logo" src="recursos/slack.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="index.html">INICIO</a>
+            <img src="recursos/home.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="galeria.html">GALERIA</a>
+            <img src="recursos/gallery.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="carrito.html">CARRITO</a>
+            <img src="recursos/shopping-cart.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="contacto.html">CONTACTO</a>
+            <img src="recursos/phone-call.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="cuenta.html">CUENTA</a>
+            <img src="recursos/account.png">
+        </div>
+    </div>
+
+    <div class="personalizado" style="max-width: 400px; margin-top: 40px; margin-left: auto; margin-right: auto;">
+        <h1 style="margin-bottom: 10px; color: #332218; text-align: center;">Iniciar Sesión</h1>
+        <form id="login-form" action="/login" method="post" style="width:100%; display:flex; flex-direction:column;">
+            <label for="correo" style="margin-bottom:5px; font-weight:bold; color:#555;">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required style="margin-bottom:20px; padding:8px; border-radius:8px; border:1px solid #ccc;">
+            
+            <label for="contrasena" style="margin-bottom:5px; font-weight:bold; color:#555;">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" required style="margin-bottom:20px; padding:8px; border-radius:8px; border:1px solid #ccc;">
+            
+            <input type="submit" value="Iniciar Sesión" style="padding:10px; background-color:#332218; color:white; border:none; border-radius:8px; font-size:16px; cursor:pointer;">
+        </form>
+        <div id="error-message"></div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita el envío tradicional
+
+            const formData = new FormData(loginForm);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(data)
+            })
+            .then(response => response.text())
+            .then(text => {
+                if(text.trim() === 'Login exitoso'){
+                    // Redirige a index.html al tener éxito
+                    window.location.href = 'index.html';
+                } else {
+                    // Muestra el mensaje de error en la misma página
+                    errorMessage.textContent = text;
+                }
+            })
+            .catch(err => {
+                errorMessage.textContent = 'Error en la conexión con el servidor';
+                console.error(err);
+            });
+        });
+    </script>
+</body>
+</html>
