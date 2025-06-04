@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="elementosMenu">
+            <img id="logo" src="recursos/slack.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="index.html">INICIO</a>
+            <img src="recursos/home.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="galeria.html">GALERIA</a>
+            <img src="recursos/gallery.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="carrito.html">CARRITO</a>
+            <img src="recursos/shopping-cart.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="contacto.html">CONTACTO</a>
+            <img src="recursos/phone-call.png">
+        </div>
+        <div class="elementosMenu">
+            <a href="cuenta.html">CUENTA</a>
+            <img src="recursos/account.png">
+        </div>
+    </div>
+    <h1>Detalle de Artesanía</h1>
+    <div class="artesania">
+        
+    </div>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener el id de la URL
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (!id) {
+        document.querySelector('.artesania').innerHTML = '<p>No se encontró la artesanía.</p>';
+        return;
+    }
+
+    fetch('/detalleartesania', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${encodeURIComponent(id)}`
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.querySelector('.artesania').innerHTML = `
+            <img src="${data.imagen}" alt="${data.Nombre}" style="max-width:300px;display:block;margin:auto;">
+            <h2>${data.Nombre}</h2>
+            <p><strong>Categoría:</strong> ${data.Categoria}</p>
+            <p><strong>Características:</strong> ${data.Caracteristicas}</p>
+            <p><strong>Precio:</strong> $${data.Precio}</p>
+        `;
+    })
+    .catch(() => {
+        document.querySelector('.artesania').innerHTML = '<p>Error al cargar la información.</p>';
+    });
+});
+</script>
+</html>
