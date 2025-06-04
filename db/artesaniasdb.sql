@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2025 at 03:44 AM
+-- Generation Time: Jun 04, 2025 at 08:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -32,8 +32,17 @@ CREATE TABLE `artesania` (
   `Nombre` varchar(100) NOT NULL,
   `Categoria` varchar(100) DEFAULT NULL,
   `Caracteristicas` text DEFAULT NULL,
-  `Precio` decimal(10,2) DEFAULT NULL
+  `Precio` decimal(10,2) DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artesania`
+--
+
+INSERT INTO `artesania` (`ID_art`, `Nombre`, `Categoria`, `Caracteristicas`, `Precio`, `imagen`) VALUES
+(1, 'Talavera poblana', 'Ceramica', 'Elaboración artesanal a mano, uso de colores como el azul y blanco, y diseños decorativos con la cultura de la región.', 300.00, '/recursosGaleria/gal1.jpg'),
+(5, 'Puerco espin', 'Madera', 'Juguete de puerco espin de madera tallada\r\nhecho a mano', 5000.00, '\\recursosGaleria\\gal3.jpg');
 
 -- --------------------------------------------------------
 
@@ -68,7 +77,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID_user`, `Nombre`, `Contrasena`, `Rol`, `Numero`, `correo`) VALUES
-(1, 'Juan Manuel Torres', '1234', 'Vendedor', '3326002101', 'jonnyma1011@gmail.com');
+(1, 'Juan Manuel Torres', '1234', 'Vendedor', '3326002101', 'jonnyma1011@gmail.com'),
+(2, 'Alcachofa', '12345', 'comprador', '3322497154', 'a22100177@ceti.mx'),
+(3, 'Alcachofaking', '12345', 'comprador', '3322497154', 'coco@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -102,7 +113,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `artesania`
 --
 ALTER TABLE `artesania`
-  MODIFY `ID_art` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_art` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `carrito`
@@ -114,7 +125,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
