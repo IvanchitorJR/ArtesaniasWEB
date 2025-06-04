@@ -41,7 +41,23 @@ app.post('/signin', (req, res) => {
     });
 });
 
+app.post('/galeria', (req, res) => {
+    const sql = 'SELECT * FROM artesania';
+    db.query(sql, (err, results) => {
+        if (err) return res.status(500).send('Error en la base de datos');
+        res.json(results);
+    });
+});
 
+app.post('/detalleartesania', (req, res) => {
+    const { id } = req.body;
+    const sql = 'SELECT * FROM artesania WHERE ID_art = ?';
+    db.query(sql, [id], (err, results) => {
+        if (err) return res.status(500).send('Error en la base de datos');
+        if (results.length === 0) return res.status(404).send('No encontrada');
+        res.json(results[0]);
+    });
+});
 
 app.listen(4000, () => {
     console.log('Servidor corriendo en http://localhost:4000');
