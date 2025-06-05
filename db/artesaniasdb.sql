@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 04, 2025 at 08:35 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 05-06-2025 a las 04:20:49
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `artesaniasdb`
+-- Base de datos: `artesaniasdb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artesania`
+-- Estructura de tabla para la tabla `artesania`
 --
 
 CREATE TABLE `artesania` (
@@ -37,17 +37,21 @@ CREATE TABLE `artesania` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `artesania`
+-- Volcado de datos para la tabla `artesania`
 --
 
 INSERT INTO `artesania` (`ID_art`, `Nombre`, `Categoria`, `Caracteristicas`, `Precio`, `imagen`) VALUES
 (1, 'Talavera poblana', 'Ceramica', 'Elaboración artesanal a mano, uso de colores como el azul y blanco, y diseños decorativos con la cultura de la región.', 300.00, '/recursosGaleria/gal1.jpg'),
-(5, 'Puerco espin', 'Madera', 'Juguete de puerco espin de madera tallada\r\nhecho a mano', 5000.00, '\\recursosGaleria\\gal3.jpg');
+(5, 'Puerco espin', 'Madera', 'Juguete de puerco espin de madera tallada\r\nhecho a mano', 5000.00, '\\recursosGaleria\\gal3.jpg'),
+(6, 'Muñeca Artesanal Otomí', 'Textiles', 'Mueñas hechas de telas fabricadas a mano.', 350.00, '\\recursosGaleria\\gal2.jpg'),
+(7, 'Juguete Tradicional de Madera', 'Madera', 'Juegos para entretenerse, hechos de madera por la comunidad indígena.', 600.00, '\\recursosGaleria\\gal4.jpg'),
+(8, 'Barro Vidriado', 'Cerámica', 'Artículos de cocina con un toque único para presentar tus comidas y bebidas.', 1000.00, '\\recursosGaleria\\gal5.jpg'),
+(9, 'Talavera Policromada', 'Cerámica', 'Productos únicos e irrepetibles hechos por comunidad oaxaqueña con bastantes meses de esfuerzo.', 2500.00, '\\recursosGaleria\\gal6.jpeg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carrito`
+-- Estructura de tabla para la tabla `carrito`
 --
 
 CREATE TABLE `carrito` (
@@ -60,7 +64,7 @@ CREATE TABLE `carrito` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -73,7 +77,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`ID_user`, `Nombre`, `Contrasena`, `Rol`, `Numero`, `correo`) VALUES
@@ -82,17 +86,17 @@ INSERT INTO `usuarios` (`ID_user`, `Nombre`, `Contrasena`, `Rol`, `Numero`, `cor
 (3, 'Alcachofaking', '12345', 'comprador', '3322497154', 'coco@gmail.com');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `artesania`
+-- Indices de la tabla `artesania`
 --
 ALTER TABLE `artesania`
   ADD PRIMARY KEY (`ID_art`);
 
 --
--- Indexes for table `carrito`
+-- Indices de la tabla `carrito`
 --
 ALTER TABLE `carrito`
   ADD PRIMARY KEY (`ID_cart`),
@@ -100,39 +104,39 @@ ALTER TABLE `carrito`
   ADD KEY `ID_art` (`ID_art`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`ID_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `artesania`
+-- AUTO_INCREMENT de la tabla `artesania`
 --
 ALTER TABLE `artesania`
-  MODIFY `ID_art` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_art` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `carrito`
+-- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
   MODIFY `ID_cart` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `ID_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `carrito`
+-- Filtros para la tabla `carrito`
 --
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`ID_user`) REFERENCES `usuarios` (`ID_user`),
